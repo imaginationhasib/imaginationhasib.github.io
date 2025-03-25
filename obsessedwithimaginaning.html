@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Eater&family=Henny+Penny&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Eater&family=Henny+Penny&family=Sevillana&display=swap" rel="stylesheet">
+
+
+<style>
+input {
+    font-size: 22px;
+}
+	
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #6492ED;
+}
+div {
+  height: 400px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+h1 {
+  font-family: "Eater", serif;
+  text-align: center;
+  font-size: 75px;
+  color: #00ff00;
+  margin: 60px 0 0 0;
+  
+}
+h2 {
+  font-family: "Henny Penny", system-ui;
+  text-align: center;
+  color:#FF0000;
+  margin: 0px 0 70px 0;
+}
+p {
+  font-family: "Sevillana", cursive;
+  color: rgba(245, 40, 145, 1);
+  background: black;
+  background: linear-gradient(bottom, rgba(39, 208, 245, 1), rgba(245, 238, 39, 0.4));
+  background: -webkit-linear-gradient(bottom, rgba(39, 208, 245, 1), rgba(245, 238, 39, 0.4));
+  background: -moz-linear-gradient(bottom, rgba(39, 208, 245, 1), rgba(245, 238, 39, 0.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  background-image: url("https://www.recipetineats.com/tachyon/2023/09/Crispy-fried-chicken-burgers_5.jpg");
+  background-size:100% 100%
+  
+}
+.second{
+  background-image: url("https://christieathome.com/wp-content/uploads/2021/01/Shrimp-Fried-Rice-10-500x500.jpg");
+  background-size: 100% 100%
+}
+.dessert{
+  background-image: url("https://www.keep-calm-and-eat-ice-cream.com/wp-content/uploads/2022/08/Ice-cream-sundae-hero-11.jpg");
+  background-size: 100% 100% 
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 16px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>Hasib's Fast food</h1>
+<h2> Finest Fast Food</h2>
+<div class="first">
+  <input  class="quantities" type="number" min="0" style="width: 50px">
+  <p>Triple Chicken Burger <span class="price">$300</span><br />
+  <small>Mustard sierra leone bologi kale chard beet greens black-eyed pea sorrel amaranth garlic tigernut spring onion summer purslane asparagus lentil. </small></p>
+</div>
+
+<div class="second">
+  <input class="quantities" type="number"  min="0" style="width: 50px">
+  <p>Shrimp-Chicken Fried Rice  <span class="price">$400</span><br />
+  <small>Tri-tip capicola kielbasa salami brisket chicken rump strip steak drumstick. Meatloaf chuck boudin ribeye pork jowl. Andouille bacon jowl meatloaf pork loin prosciutto bresaola.</small></p>
+</div>
+  
+<div class="dessert">
+  <input class="quantities"  type="number" class="quantities" min="0" style="width: 50px">
+  <p>Ice-cream Sundae <span class="price">$20</span><br />
+  <small>Lollipop tart cotton candy jelly-o carrot cake apple pie cupcake. Jelly-o bear claw ice cream candy canes.This is very creemy. Please buy it for me. Please please.</small></p>
+
+
+</div>
+
+
+<br><br>
+<br><br>
+<input id="Name" placeholder="Your name">
+<input id="Email" placeholder="Your email">
+<input id="submit" type="submit">
+<br><br>
+
+
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+     
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBF6kajB6jssa1FYlKeFyp5Ei-Dlr4bi4E",
+      authDomain: "that-s-yours.firebaseapp.com",
+      projectId: "that-s-yours",
+      storageBucket: "that-s-yours.firebasestorage.app",
+      messagingSenderId: "989273168309",
+      appId: "1:989273168309:web:9a6b7920d09271a766a1fc",
+      measurementId: "G-XWM9HN481L"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const quantities = document.querySelectorAll(".quantities") 
+    const itemsList = ["BURGER","SHIRMP CHICKEN FRIED RICE","ICE CREAM"]
+    
+    
+    const db = getDatabase(app);
+    const Name = document.querySelector("#Name") 
+        const Email = document.querySelector("#Email")
+        document.querySelector('#submit').addEventListener('click', Submit)
+        const prices = document.querySelectorAll(".price") 
+    
+    
+    
+    function Submit() {
+      const timestamp = buildTimestamp()
+	  let total = 0 
+  	  let cart = { }
+  	  for  (let i=0; i<quantities.length; i=i+1) {
+  	  	if (quantities[i].value != "0" && quantities[i].value != "") {	
+			  let price = prices[i].innerHTML.replace('$', '')
+			  total = total + quantities[i].value * price 
+  	  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+  	  	}
+  	  	quantities[i].value = ""
+  	  }
+	    
+  
+      set(ref(db, timestamp), {
+    	  Name: Name.value,
+          email: Email.value,
+	  cart: cart,
+          totalPrice: total,
+	  paid: "not yet",
+	      
+      });
+
+      Name.value = ""
+      Email.value = ""
+    }
+
+
+    function buildTimestamp() {
+      const now = new Date();
+      let timestamp = now.getFullYear().toString() + "/";
+      //const month = now.toLocaleString('default', { month: 'long' });
+
+      let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+      month = month.toString()
+      month = addLeadingZero(month)
+      timestamp += month + "/"; 
+
+      let date = now.getDate().toString()
+      date = addLeadingZero(date)
+      timestamp += date + "/";
+
+      let hours = now.getHours().toString()
+      hours = addLeadingZero(hours)
+      timestamp += hours + ":";
+
+      let minutes = now.getMinutes().toString()
+      minutes = addLeadingZero(minutes)
+      timestamp += minutes + ":";
+
+      let seconds = now.getSeconds().toString()
+      seconds = addLeadingZero(seconds)
+      timestamp += seconds;
+
+      return timestamp
+    }
+
+    function addLeadingZero(units) {
+    	if (units.length < 2) {
+    		units = "0" + units
+    	}
+    	return units
+    }
+  </script>
+
+</body>
